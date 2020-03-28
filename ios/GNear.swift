@@ -10,15 +10,19 @@ import Foundation
 
 // CalendarManager.swift
 
-@objc(CalendarManager)
-class CalendarManager: NSObject {
+@objc(GNearByManager)
+class CalendarManager: RCTEventEmitter {
   private override init(){}
   private var publication:GNSPublication?
   private var subscription:GNSSubscription?
   private var manager = GNSMessageManager(apiKey: "AIzaSyCJgchjOLqRx4lersj_16H7YvBDvqOTZF8");
   
-  @objc static func requiresMainQueueSetup() -> Bool {
+  override static  func requiresMainQueueSetup() -> Bool {
       return true
+  }
+  
+  @objc override func supportedEvents() -> [String]! {
+    return ["NearByEvent"]
   }
   
   @objc func addEvent(name: String, location: String, date: NSNumber) -> Void {
@@ -33,7 +37,7 @@ class CalendarManager: NSObject {
   
   @objc(startScanning:)
   func startScanning(name: String) -> Void {
-    //GNSMessageManager.setDebugLoggingEnabled(true)
+    // GNSMessageManager.setDebugLoggingEnabled(true)
     
     let serialQueue = DispatchQueue(label: "calling")
 //    var manager: GNSMessageManager?;
@@ -43,8 +47,10 @@ class CalendarManager: NSObject {
 //    }
     let names = ["Ford", "Zaphod", "Trillian", "Arthur", "Marvin"]
 
-    let randomName = names.randomElement()
+    var randomName = names.randomElement()
     print(randomName);
+    randomName = name;
+    self.sendEvent(withName: "NearByEvent", body: ["name": randomName])
     let message = GNSMessage(content: randomName?.data(using: .utf8));
     self.publication = nil;
     self.publication = self.manager?.publication(with: message,
@@ -52,7 +58,7 @@ class CalendarManager: NSObject {
       guard let params = params else { return }
       params.strategy = GNSStrategy(paramsBlock: { (params: GNSStrategyParams?) in
         guard let params = params else { return }
-        // params.discoveryMediums = .default
+        // params.discoveryMediums = .audio
         // params.discoveryMode = .default
         params.allowInBackground = true
       })
@@ -65,19 +71,22 @@ class CalendarManager: NSObject {
     self.subscription = nil;
     self.subscription =
       self.manager?.subscription(messageFoundHandler: { (message: GNSMessage?) in
-        var m = String(data: (message?.content)!, encoding: .utf8)
-        print("message found " + m!)
+      var m = String(data: (message?.content)!, encoding: .utf8)
+        print("message found ---- " + m!);
+        print(message)
+        self.sendEvent(withName: "NearByEvent", body: message)
     },
     messageLostHandler: { (message: GNSMessage?) in
       // Remove the name from the list
-      print("message remove")
+      print("message remove --- ")
+      self.sendEvent(withName: "NearByEvent", body: message)
     },
     paramsBlock:{ (params: GNSSubscriptionParams?) in
       guard let params = params else { return }
       params.strategy = GNSStrategy(paramsBlock: { (params: GNSStrategyParams?) in
         guard let params = params else { return }
         params.allowInBackground = true
-        params.discoveryMediums = .BLE
+        //params.discoveryMediums = .audio
       })
     });
     

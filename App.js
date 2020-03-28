@@ -15,6 +15,7 @@ import {
   Text,
   StatusBar,
   NativeModules,
+  NativeEventEmitter,
 } from 'react-native';
 
 import {
@@ -26,10 +27,33 @@ import {
 } from 'react-native/Libraries/NewAppScreen';
 
 class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.eventSubscription = null;
+    this.state = {
+      myname: '',
+    };
+  }
+
   componentDidMount() {
-    console.dir(NativeModules.CalendarManager);
-    const cal = NativeModules.CalendarManager;
+    this.registerSubscription();
+    console.dir(NativeModules.GNearByManager);
+    const cal = NativeModules.GNearByManager;
     cal.startScanning('hey I am Kevin');
+  }
+
+  componentWillUnmount() {
+    this.eventSubscription.remove();
+  }
+
+  registerSubscription() {
+    const {GNearByManager} = NativeModules;
+
+    const gNearByManagerEmitter = new NativeEventEmitter(GNearByManager);
+    this.eventSubscription = gNearByManagerEmitter.addListener(
+      'NearByEvent',
+      (reminder) => console.log(reminder),
+    );
   }
 
   render() {

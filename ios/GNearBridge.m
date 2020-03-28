@@ -11,7 +11,14 @@
 // CalendarManagerBridge.m
 #import "React/RCTBridgeModule.h"
 
-@interface RCT_EXTERN_MODULE(CalendarManager, NSObject)
+#import "React/RCTEventEmitter.h"
+
+@interface RCT_EXTERN_MODULE(GNearByManager, RCTEventEmitter)
+
+- (NSArray<NSString *> *)supportedEvents
+{
+  return @[@"NearByEvent"];
+}
 
 RCT_EXTERN_METHOD(addEvent:(NSString *)name location:(NSString *)location date:(NSNumber *)date)
 

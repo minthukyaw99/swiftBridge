@@ -4,3 +4,4 @@
 // CalendarManager-Bridging-Header.h
 #import "React/RCTBridgeModule.h"
 #import <GNSMessages.h>
+#import "React/RCTEventEmitter.h"

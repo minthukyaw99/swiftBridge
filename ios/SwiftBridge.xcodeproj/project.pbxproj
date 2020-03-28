@@ -18,6 +18,8 @@
 		475F2B36800EEBF48AEAEE30 /* libPods-SwiftBridge-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 56EF91507D2F24E2CF2604BF /* libPods-SwiftBridge-tvOS.a */; };
 		6822858A242EBD51007E51A7 /* GNear.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68228589242EBD51007E51A7 /* GNear.swift */; };
 		6822858C242EBE26007E51A7 /* GNearBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 6822858B242EBE26007E51A7 /* GNearBridge.m */; };
+		6839A628242FCB10004580CB /* ReactNativeEventEmitter.m in Sources */ = {isa = PBXBuildFile; fileRef = 6839A627242FCB10004580CB /* ReactNativeEventEmitter.m */; };
+		6839A62A242FCB76004580CB /* ReactNativeEventEmitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6839A629242FCB76004580CB /* ReactNativeEventEmitter.swift */; };
 		A1AAD3303EEB9DF45694769D /* libPods-SwiftBridge-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 260281EFD101DFCC838B3B3C /* libPods-SwiftBridge-tvOSTests.a */; };
 		C3AC2F092B7A8188429879B1 /* libPods-SwiftBridge.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6344AAF5E9FE16AE6A30A558 /* libPods-SwiftBridge.a */; };
 		E30CD6ACD3AF7670BA96893A /* libPods-SwiftBridge-SwiftBridgeTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 15B10CD400A7EBF9BC0B970D /* libPods-SwiftBridge-SwiftBridgeTests.a */; };
@@ -65,6 +67,8 @@
 		68228589242EBD51007E51A7 /* GNear.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GNear.swift; sourceTree = "<group>"; };
 		6822858B242EBE26007E51A7 /* GNearBridge.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GNearBridge.m; sourceTree = "<group>"; };
 		6822858D242EC132007E51A7 /* GNearHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GNearHeader.h; sourceTree = "<group>"; };
+		6839A627242FCB10004580CB /* ReactNativeEventEmitter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReactNativeEventEmitter.m; sourceTree = "<group>"; };
+		6839A629242FCB76004580CB /* ReactNativeEventEmitter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReactNativeEventEmitter.swift; sourceTree = "<group>"; };
 		94FD88A1623DB6CB5B54D5A1 /* Pods-SwiftBridge-SwiftBridgeTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftBridge-SwiftBridgeTests.debug.xcconfig"; path = "Target Support Files/Pods-SwiftBridge-SwiftBridgeTests/Pods-SwiftBridge-SwiftBridgeTests.debug.xcconfig"; sourceTree = "<group>"; };
 		B0904E4F5EBA4443490CD9EF /* Pods-SwiftBridge-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftBridge-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-SwiftBridge-tvOSTests/Pods-SwiftBridge-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
 		BB1E3A89B15324CC507CF0CF /* Pods-SwiftBridge-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftBridge-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-SwiftBridge-tvOS/Pods-SwiftBridge-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
@@ -141,6 +145,8 @@
 				68228588242EBD51007E51A7 /* SwiftBridge-Bridging-Header.h */,
 				6822858B242EBE26007E51A7 /* GNearBridge.m */,
 				6822858D242EC132007E51A7 /* GNearHeader.h */,
+				6839A627242FCB10004580CB /* ReactNativeEventEmitter.m */,
+				6839A629242FCB76004580CB /* ReactNativeEventEmitter.swift */,
 			);
 			name = SwiftBridge;
 			sourceTree = "<group>";
@@ -584,7 +590,9 @@
 			files = (
 				6822858A242EBD51007E51A7 /* GNear.swift in Sources */,
 				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
+				6839A62A242FCB76004580CB /* ReactNativeEventEmitter.swift in Sources */,
 				6822858C242EBE26007E51A7 /* GNearBridge.m in Sources */,
+				6839A628242FCB10004580CB /* ReactNativeEventEmitter.m in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
